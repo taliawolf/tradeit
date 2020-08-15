@@ -1,3 +1,14 @@
-<% @listings.each do |listing| %>
-<%= listing.title %>
-<% end %>
+<div class="page-container">
+  <div class="listing-cards">
+    <% @listings.each do |listing| %>
+      <div class="listing-card">
+        <div class="listing-card-title">
+          <%= listing.title.upcase %>
+        </div>
+        <div class="listing-card-details">
+          <%= listing.text %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

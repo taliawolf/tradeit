@@ -1,0 +1,18 @@
+// .listing-cards{
+//   margin: 50px 100px;
+// }
+
+.listing-card{
+  background-color: white;
+  box-shadow: 4px 1px 16px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin: 25px auto;
+  height: 350px;
+  width: 500px;
+}
+
+.listing-card-title {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  padding-top: 15px;
+}
