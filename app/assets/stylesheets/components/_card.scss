@@ -16,3 +16,20 @@
   font-family: 'Lato', sans-serif;
   padding-top: 15px;
 }
+
+.photo-container{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  flex-grow: 1;
+
+ img {
+  height: 100px;
+  width: 200px;
+ }
+}
+
+.listing-card-details{
+  padding: 15px;
+}

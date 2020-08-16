@@ -2,12 +2,31 @@
   <div class="listing-cards">
     <% @listings.each do |listing| %>
       <div class="listing-card">
+        <div class="photo-container">
+          <% listing.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
         <div class="listing-card-title">
           <%= listing.title.upcase %>
         </div>
         <div class="listing-card-details">
           <%= listing.text %>
         </div>
+      </div>
+      <!-- offers -->
+      <div class="offer-cards">
+        <% listing.offers.each do |offer| %>
+          <div class="offer-card">
+            <%= offer.text %>
+          </div>
+        <% end %>
+      </div>
+      <div class="new-offer-form">
+        <%= simple_form_for [listing, offer] do |f| %>
+        <%= f.input :text, placeholder: 'What do you want to tradeit for?' %>
+        <%= f.button :submit %>
+        <% end %>
       </div>
     <% end %>
   </div>
