@@ -1,9 +1,4 @@
 class OffersController < ApplicationController
-  def new
-    @offer = Offer.new
-    @listing = Listing.find(params[:listing_id])
-  end
-
   def create
     @listing = Listing.find(params[:listing_id])
     @offer = Offer.new(offer_params)

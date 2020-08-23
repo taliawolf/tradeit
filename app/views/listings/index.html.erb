@@ -19,15 +19,26 @@
         <% listing.offers.each do |offer| %>
           <div class="offer-card">
             <%= offer.text %>
+            <% if listing.user == current_user && listing.active%>
+              <div class="choose-offer-button">
+                <%= link_to 'choose this offer', listing_path(listing), method: :patch %>
+              </div>
+              <% elsif listing.user == current_user && listing.active == false %>
+                <p>cannot choose</p>
+            <% end %>
           </div>
         <% end %>
       </div>
-      <div class="new-offer-form">
-        <%= simple_form_for [listing, offer] do |f| %>
-        <%= f.input :text, placeholder: 'What do you want to tradeit for?' %>
-        <%= f.button :submit %>
+      <% if listing.active %>
+        <div id="new-offer-form">
+          <%= simple_form_for [listing, Offer.new] do |f| %>
+          <%= f.input :text, placeholder: 'What do you want to tradeit for?' %>
+          <%= f.button :submit %>
+          <% end %>
+        </div>
+        <% else %>
+          <p>listing has been taken</p>
         <% end %>
-      </div>
     <% end %>
   </div>
 </div>
