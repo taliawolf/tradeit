@@ -7,7 +7,7 @@
   box-shadow: 4px 1px 16px 4px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   margin: 25px auto;
-  height: 350px;
+  height: auto;
   width: 500px;
 }
 
@@ -17,7 +17,7 @@
   padding-top: 15px;
 }
 
-.photo-container{
+.photo-container {
   display:grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -30,6 +30,14 @@
  }
 }
 
-.listing-card-details{
+.listing-card-details {
   padding: 15px;
+  border-bottom: 2px solid lightgrey;
+}
+
+.offer-card {
+  background-color: #DEE2EC;
+  border-radius: 8px;
+  margin: 16px;
+  text-align: center;
 }

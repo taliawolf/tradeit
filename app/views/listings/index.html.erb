@@ -1,44 +1,41 @@
-<div class="page-container">
-  <div class="listing-cards">
-    <% @listings.each do |listing| %>
-      <div class="listing-card">
-        <div class="photo-container">
-          <% listing.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-        </div>
-        <div class="listing-card-title">
-          <%= listing.title.upcase %>
-        </div>
-        <div class="listing-card-details">
-          <%= listing.text %>
-        </div>
-      </div>
-      <!-- offers -->
-      <div class="offer-cards">
-        <% listing.offers.each do |offer| %>
-          <div class="offer-card">
-            <%= offer.text %>
-            <% if listing.user == current_user && listing.active%>
-              <div class="choose-offer-button">
-                <%= link_to 'choose this offer', listing_path(listing), method: :patch %>
-              </div>
-              <% elsif listing.user == current_user && listing.active == false %>
-                <p>cannot choose</p>
-            <% end %>
-          </div>
+<div class="listing-cards">
+  <% @listings.each do |listing| %>
+    <div class="listing-card">
+      <div class="photo-container">
+        <% listing.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       </div>
-      <% if listing.active %>
-        <div id="new-offer-form">
-          <%= simple_form_for [listing, Offer.new] do |f| %>
-          <%= f.input :text, placeholder: 'What do you want to tradeit for?' %>
-          <%= f.button :submit %>
+      <div class="listing-card-title">
+        <%= listing.title.upcase %>
+      </div>
+      <div class="listing-card-details">
+        <%= listing.text %>
+      </div>
+    <div class="offer-cards">
+      <% listing.offers.each do |offer| %>
+        <div class="offer-card">
+          <%= offer.text %>
+          <% if listing.user == current_user && listing.active%>
+            <div class="choose-offer-button">
+              <%= link_to 'choose this offer', listing_path(listing), method: :patch %>
+            </div>
+            <% elsif listing.user == current_user && listing.active == false %>
+              <p>cannot choose</p>
           <% end %>
         </div>
-        <% else %>
-          <p>listing has been taken</p>
+      <% end %>
+    </div>
+    <% if listing.active %>
+      <div id="new-offer-form">
+        <%= simple_form_for [listing, Offer.new] do |f| %>
+        <%= f.input :text, placeholder: 'What do you want to tradeit for?' %>
+        <%= f.button :submit %>
         <% end %>
+      </div>
+      <% else %>
+        <p class='text-center'>listing has been taken</p>
     <% end %>
-  </div>
+   </div>
+  <% end %>
 </div>
