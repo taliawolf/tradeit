@@ -1,6 +1,11 @@
 <div class="listing-cards">
-  <% @listings.each do |listing| %>
+  <% @listings.order(created_at: :desc).each do |listing| %>
     <div class="listing-card">
+      <% if listing.active == false%>
+      <div class="listing-sold-banner">
+        <p>this listing has been traded</p>
+      </div>
+      <% end %>
       <div class="photo-container">
         <% listing.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -21,7 +26,7 @@
               <%= link_to 'choose this offer', listing_path(listing), method: :patch %>
             </div>
             <% elsif listing.user == current_user && listing.active == false %>
-              <p>cannot choose</p>
+              <p class = 'cannot-choose-badge'>cannot choose</p>
           <% end %>
         </div>
       <% end %>
@@ -34,7 +39,7 @@
         <% end %>
       </div>
       <% else %>
-        <p class='text-center'>listing has been taken</p>
+        <p class='text-center'> The seller has already selected an offer </p>
     <% end %>
    </div>
   <% end %>
