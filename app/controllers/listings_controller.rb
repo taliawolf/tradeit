@@ -19,8 +19,7 @@ class ListingsController < ApplicationController
     end
   end
 
-   def update
-    p params
+  def update
     @listing.active = false
     if @listing.save
       redirect_to listings_path
